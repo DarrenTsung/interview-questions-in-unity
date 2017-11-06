@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using UnityEngine;
 
 namespace InterviewQuestions.BinaryTree {
@@ -18,10 +19,15 @@ namespace InterviewQuestions.BinaryTree {
 	//              7   6     8
 	// Can be saved as:
 	//
-	// 1 2 3 4 5 * 0 7 6 * * 8 * * * * * * *
+	// "[1] [2 3] [4 5 * 0] [7 6 * * 8 * * *]" (brackets for organizational purposes)
 	//
 	public static class BinaryTreeStringUtil {
+		private static readonly Regex bracketRegex = new Regex(@"(\[|\])");
+
 		public static BinaryTreeNode Create(string treeRepresentation) {
+			// Remove brackets from string
+			treeRepresentation = bracketRegex.Replace(treeRepresentation, "");
+
 			string[] treeNodeRepresentations = treeRepresentation.Split(' ');
 			if (treeNodeRepresentations.Length <= 0) {
 				Debug.LogWarning("Invalid treeRepresentation - no length!");

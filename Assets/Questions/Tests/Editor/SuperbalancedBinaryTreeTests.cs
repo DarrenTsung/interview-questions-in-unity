@@ -25,7 +25,7 @@ namespace InterviewQuestions.SuperbalancedBinaryTree {
 		// Any * means that node does not exist
 		[Test]
 		public static void IsSuperbalanced_BasicExample_ReturnsExpected() {
-			var root = BinaryTreeStringUtil.Create("1 2 3 4 5 6 7");
+			var root = BinaryTreeStringUtil.Create("[1] [2 3] [4 5 6 7]");
 			Assert.That(SuperbalancedBinaryTree.IsSuperbalanced(root), Is.EqualTo(true));
 		}
 
@@ -36,31 +36,31 @@ namespace InterviewQuestions.SuperbalancedBinaryTree {
 
 		[Test]
 		public static void IsSuperbalanced_HandlesNoChildrenCorrectly() {
-			var root = BinaryTreeStringUtil.Create("1");
+			var root = BinaryTreeStringUtil.Create("[1]");
 			Assert.That(SuperbalancedBinaryTree.IsSuperbalanced(root), Is.EqualTo(true));
 		}
 
 		[Test]
 		public static void IsSuperbalanced_HandlesSingleBranchCorrectly() {
-			var root = BinaryTreeStringUtil.Create("1 2 * 4 * * *");
+			var root = BinaryTreeStringUtil.Create("[1] [2 *] [4 * * *]");
 			Assert.That(SuperbalancedBinaryTree.IsSuperbalanced(root), Is.EqualTo(true));
 		}
 
 		[Test]
 		public static void IsSuperbalanced_HandlesInbalanceCorrectly() {
-			var root = BinaryTreeStringUtil.Create("1 2 3 4 * * * 8");
+			var root = BinaryTreeStringUtil.Create("[1] [2 3] [4 * * *] [8 * * * * * * *]");
 			Assert.That(SuperbalancedBinaryTree.IsSuperbalanced(root), Is.EqualTo(false));
 		}
 
 		[Test]
 		public static void IsSuperbalanced_HandlesDeepInbalanceCorrectly() {
-			var root = BinaryTreeStringUtil.Create("1 2 * 4 5 * * 8 * * * * * * * 16");
+			var root = BinaryTreeStringUtil.Create("[1] [2 *] [4 5 * *] [8 * * * * * * *] [16]");
 			Assert.That(SuperbalancedBinaryTree.IsSuperbalanced(root), Is.EqualTo(false));
 		}
 
 		[Test]
 		public static void IsSuperbalanced_HandlesDeepInbalance2Correctly() {
-			var root = BinaryTreeStringUtil.Create("1 2 3 4 * * 7 8 * * * * * * * 16");
+			var root = BinaryTreeStringUtil.Create("[1] [2 3] [4 * * 7] [8 * * * * * * *] [16]");
 			Assert.That(SuperbalancedBinaryTree.IsSuperbalanced(root), Is.EqualTo(false));
 		}
 	}
