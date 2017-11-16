@@ -1,0 +1,3 @@
+[submodule "Assets/NUnitLite"]
+	path = Assets/NUnitLite
+	url = https://github.com/DarrenTsung/NUnitLite.git
